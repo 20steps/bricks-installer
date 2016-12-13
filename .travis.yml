@@ -19,7 +19,7 @@ before_install:
 
 install:
   - composer install
-  - ~/.phpenv/versions/7.0/bin/php box build
+  - box build
 
 script:
   - phpunit
