@@ -10,3 +10,4 @@ box build
 ```
 This should result in a file called bricks.phar in the cwd.
 
+* Inspect .travis.yml for more details
