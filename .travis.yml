@@ -19,7 +19,7 @@ before_install:
 
 install:
   - composer install
-  - box build
+  - php box build
 
 script:
   - phpunit
