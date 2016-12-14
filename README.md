@@ -2,6 +2,7 @@ Bricks Installer
 =================
 
 [![Build Status](https://travis-ci.org/20steps/bricks-installer.svg?branch=master)](https://travis-ci.org/20steps/bricks-installer)
+[![Packagist version](https://img.shields.io/packagist/v/20steps/bricks-installer.svg)](https://packagist.org/packages/20steps/bricks-installer)
 
 **This is the official installer to start new projects based on the Bricks platform by 20steps.**
 
