@@ -90,7 +90,7 @@ class SelfUpdateCommand extends DownloadCommand
     protected function initialize(InputInterface $input, OutputInterface $output)
     {
         parent::initialize($input, $output);
-        $this->remoteInstallerFile = 'https://bricks.20steps.de/installer';
+        $this->remoteInstallerFile = 'https://bricks.20steps.de/downloads/installer';
         $this->currentInstallerFile = realpath($_SERVER['argv'][0]) ?: $_SERVER['argv'][0];
         $this->tempDir = sys_get_temp_dir();
         $this->currentInstallerBackupFile = basename($this->currentInstallerFile, '.phar').'-backup.phar';
@@ -253,6 +253,6 @@ class SelfUpdateCommand extends DownloadCommand
      */
     protected function getRemoteFileUrl()
     {
-        return 'https://bricks.20steps.de/installer';
+        return 'https://bricks.20steps.de/downloads/installer';
     }
 }

@@ -110,8 +110,23 @@ abstract class DownloadCommand extends Command
     {
         $this->output = $output;
         $this->fs = new Filesystem();
-
-        $this->latestInstallerVersion = $this->getUrlContents(Application::VERSIONS_URL);
+	
+	    $client = $this->getGuzzleClient();
+	    $bricksInstallerVersions = $client->get('https://bricks.20steps.de/versions/bricks-installer.json')->json();
+	    if (empty($bricksInstallerVersions)) {
+		    throw new \RuntimeException(
+			    "There was a problem while downloading the list of Bricks installer versions from\n".
+			    "20steps.de. Check that you are online and the following URL is accessible:\n\n".
+			    'https://bricks.20steps.de/versions/bricks-installer.json'
+		    );
+	    }
+	    if (!array_key_exists('latest',$bricksInstallerVersions)) {
+		    throw new \RuntimeException(
+			    "There was a problem while parsing the list of Bricks installer versions from\n".
+			    "20steps.de. Please contact support@20steps.de\n"
+		    );
+	    }
+        $this->latestInstallerVersion = $bricksInstallerVersions['latest'];
         $this->localInstallerVersion = $this->getApplication()->getVersion();
 
         $this->enableSignalHandler();

@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
 scp bricks.phar root@bricks.cluster.20steps.de:/mnt/data/zones/l/custom/BricksSite/downloads/installer
+scp versions.json root@bricks.cluster.20steps.de:/mnt/data/zones/l/custom/BricksSite/versions/bricks-installer.json
