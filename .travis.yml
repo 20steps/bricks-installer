@@ -23,3 +23,7 @@ install:
 
 script:
   - phpunit
+
+notifications:
+  email:
+    - dev@20steps.de
