@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+box build
+cp bricks.phar /usr/local/bin/bricks

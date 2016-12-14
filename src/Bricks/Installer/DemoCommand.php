@@ -174,6 +174,6 @@ class DemoCommand extends DownloadCommand
      */
     protected function getRemoteFileUrl()
     {
-        return 'https://bricks.20steps.de/downloads/bricks-demo_'.$this->version;
+        return 'https://bricks.20steps.de/downloads/bricks-platform-demo_'.$this->version;
     }
 }

@@ -50,7 +50,7 @@ class IntegrationTest extends \PHPUnit_Framework_TestCase
         $this->assertContains('Bricks Demo Application was successfully installed.', $output);
 
         $output = $this->runCommand('php bin/console --version', $projectDir);
-        $this->assertRegExp('/Symfony version 3\.\d+\.\d+(-DEV)? - app\/dev\/debug/', $output);
+        $this->assertRegExp('/Symfony 3\.\d+\.\d+(-DEV)? \(kernel: app, env: dev, debug: true\)/', $output);
 
         $composerConfig = json_decode(file_get_contents($projectDir.'/composer.json'), true);
     }
@@ -85,11 +85,11 @@ class IntegrationTest extends \PHPUnit_Framework_TestCase
         $this->fs->remove($projectDir);
         $this->fs->mkdir($projectDir);
 
-        $output = $this->runCommand(sprintf('php %s/bricks.phar new . 3.0.0', $this->rootDir), $projectDir);
+        $output = $this->runCommand(sprintf('php %s/bricks.phar new . 3.2.1', $this->rootDir), $projectDir);
         $this->assertContains('Downloading Bricks...', $output);
 
         $output = $this->runCommand('php bin/console --version', $projectDir);
-        $this->assertContains('Symfony version 3.0.0 - app/dev/debug', $output);
+        $this->assertContains('Symfony 3.2.1 (kernel: app, env: dev, debug: true)', $output);
     }
 
     /**
@@ -121,9 +121,9 @@ class IntegrationTest extends \PHPUnit_Framework_TestCase
     {
         return array(
             array(
-                '3.0',
-                '/.*Bricks 3\.0\.\d+ was successfully installed.*/',
-                '/Symfony version 3\.0\.\d+(-DEV)? - app\/dev\/debug/',
+                '3.2',
+                '/.*Bricks 3\.2\.\d+ was successfully installed.*/',
+                '/Symfony 3\.2\.\d+(-DEV)? \(kernel: app, env: dev, debug: true\)/',
                 '7.0',
             )
         );

@@ -13,14 +13,14 @@ This step is only needed the first time you use the installer:
 ### Linux and Mac OS X
 
 ```bash
-$ sudo curl -LsS https://bricks.20steps.de/installer -o /usr/local/bin/bricks
+$ sudo curl -LsS https://bricks.20steps.de/downloads/installer -o /usr/local/bin/bricks
 $ sudo chmod a+x /usr/local/bin/bricks
 ```
 
 ### Windows
 
 ```bash
-c:\> php -r "file_put_contents('bricks', file_get_contents('https://bricks.20steps.de/installer'));"
+c:\> php -r "file_put_contents('bricks', file_get_contents('https://bricks.20steps.de/downloads/installer'));"
 ```
 
 Move the downloaded `bricks` file to your projects directory and execute

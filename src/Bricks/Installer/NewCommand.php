@@ -353,6 +353,6 @@ class NewCommand extends DownloadCommand
      */
     protected function getRemoteFileUrl()
     {
-        return 'https://bricks.20steps.de/downloads/bricks-platform_'.$this->version;
+        return 'https://bricks.20steps.de/downloads/bricks-platform-standard-edition_'.$this->version;
     }
 }
