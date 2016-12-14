@@ -40,8 +40,8 @@ Then, move both files (`bricks` and `bricks.bat`) to any location included
 in your execution path. Now you can run the `bricks` command anywhere on your
 system.
 
-Installing with Composer¶
--------------------------
+Installing with Composer
+------------------------
 
 If you can't use the Bricks installer for any reason, you can create Bricks applications with [**Composer**][1], the dependency manager used by modern PHP applications.
 
