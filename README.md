@@ -41,12 +41,14 @@ Then, move both files (`bricks` and `bricks.bat`) to any location included
 in your execution path. Now you can run the `bricks` command anywhere on your
 system.
 
-Installing with Composer
-------------------------
+Installing without the Installer
+--------------------------------
 
-If you can't use the Bricks installer for any reason, you can create Bricks applications with [**Composer**][2], the dependency manager used by modern PHP applications.
+If you can't use the Bricks Installer for any reason, you can create Bricks applications with [**Composer**][2], the dependency manager used by modern PHP applications.
 
-If you don't have Composer installed in your computer, start by installing Composer globally. Then, execute the create-project command to create a new Bricks application based on its latest stable version:
+If you don't have Composer installed in your computer, start by installing Composer globally. 
+
+Then, execute the create-project command to create a new Bricks application based on its latest stable version:
 
 ```bash
 composer create-project 20steps/bricks-platform-standard-edition my_project_name
