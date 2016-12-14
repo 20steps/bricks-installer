@@ -26,12 +26,19 @@ phpunit
 Test via Travis-CI and distribute
 ---------------------------------
 1. Push to github
-2. Inspect test results on [Travis][3] 
-3. If all tests pass increase the $appVersion in the file bricks
-4. Set the version number in the file versions.json
-5. Create a git tag using the version number and push the tag to github by executing
 ```bash
 git commit -am "your commit message"
+git push origin master
+```
+2. Inspect test results on [Travis][3] 
+3. If all tests pass increase the $appVersion in the file bricks
+4. Set the version number in the file versions.json and push to github
+```bash
+git commit -am "your release message"
+git push origin master
+```
+5. Create a git tag using the version number and push the tag to github by executing
+```bash
 git tag new_version
 git push origin --tags
 ```
