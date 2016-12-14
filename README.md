@@ -4,7 +4,7 @@ Bricks Installer
 [![Build Status](https://travis-ci.org/20steps/bricks-installer.svg?branch=master)](https://travis-ci.org/20steps/bricks-installer)
 [![Packagist version](https://img.shields.io/packagist/v/20steps/bricks-installer.svg)](https://packagist.org/packages/20steps/bricks-installer)
 
-**This is the official installer to start new projects based on the Bricks platform by 20steps.**
+**This is the official installer to start new projects based on the [**Bricks platform by 20steps**][1].**
 
 Installing the installer
 ------------------------
@@ -44,7 +44,7 @@ system.
 Installing with Composer
 ------------------------
 
-If you can't use the Bricks installer for any reason, you can create Bricks applications with [**Composer**][1], the dependency manager used by modern PHP applications.
+If you can't use the Bricks installer for any reason, you can create Bricks applications with [**Composer**][2], the dependency manager used by modern PHP applications.
 
 If you don't have Composer installed in your computer, start by installing Composer globally. Then, execute the create-project command to create a new Bricks application based on its latest stable version:
 
@@ -169,4 +169,5 @@ If you can't locate the `cacert.pem` file anywhere on your system, you can
 safely download it from the official website of the cURL project:
 http://curl.haxx.se/ca/cacert.pem
 
-[1]:  https://getcomposer.org/
+[1]:  https://github.com/20steps/bricks-platform-standard-edition
+[2]:  https://getcomposer.org/
