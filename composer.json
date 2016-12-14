@@ -1,5 +1,5 @@
 {
-    "name": "bricks/bricks-installer",
+    "name": "20steps/bricks-installer",
     "description": "The official installer to create projects based on the Bricks platform.",
     "keywords": ["bricks", "platform", "installer", "php"],
     "license": "MIT",
@@ -29,6 +29,11 @@
     "extra": {
         "branch-alias": {
             "dev-master": "1.0-dev"
+        }
+    },
+    "config": {
+        "platform": {
+            "php": "7.0.0"
         }
     },
     "bin": [

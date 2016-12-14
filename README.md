@@ -40,6 +40,17 @@ Then, move both files (`bricks` and `bricks.bat`) to any location included
 in your execution path. Now you can run the `bricks` command anywhere on your
 system.
 
+Installing with Composer¶
+-------------------------
+
+If you can't use the Bricks installer for any reason, you can create Bricks applications with [**Composer**][1], the dependency manager used by modern PHP applications.
+
+If you don't have Composer installed in your computer, start by installing Composer globally. Then, execute the create-project command to create a new Bricks application based on its latest stable version:
+
+```bash
+composer create-project 20steps/bricks-platform-standard-edition my_project_name
+```
+ 
 Using the installer
 -------------------
 
@@ -156,3 +167,5 @@ openssl.cafile=C:/path/to/cacert.pem
 If you can't locate the `cacert.pem` file anywhere on your system, you can
 safely download it from the official website of the cURL project:
 http://curl.haxx.se/ca/cacert.pem
+
+[1]:  https://getcomposer.org/
