@@ -1,6 +1,6 @@
 {
     "name": "20steps/bricks-installer",
-    "description": "The official installer to create projects based on the Bricks platform.",
+    "description": "The official installer to create projects based on the Bricks platform by 20steps.",
     "keywords": ["bricks", "platform", "installer", "php"],
     "license": "MIT",
     "authors": [
