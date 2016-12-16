@@ -2,7 +2,7 @@ Bricks Installer
 =================
 
 [![Build Status](https://travis-ci.org/20steps/bricks-installer.svg?branch=master)](https://travis-ci.org/20steps/bricks-installer)
-[![Tested PHP versions](http://php-eye.com/badge/20steps/bricks-installer/tested.svg)
+[![Tested PHP versions](http://php-eye.com/badge/20steps/bricks-installer/tested.svg)](https://travis-ci.org/20steps/bricks-installer)
 [![Dependency Status](https://www.versioneye.com/user/projects/58542d53ad9aa2003316bc27/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/58542d53ad9aa2003316bc27)
 [![Packagist version](https://img.shields.io/packagist/v/20steps/bricks-installer.svg)](https://packagist.org/packages/20steps/bricks-installer)
 
