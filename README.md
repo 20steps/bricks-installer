@@ -2,6 +2,7 @@ Bricks Installer
 =================
 
 [![Build Status](https://travis-ci.org/20steps/bricks-installer.svg?branch=master)](https://travis-ci.org/20steps/bricks-installer)
+[![Tested PHP versions](http://php-eye.com/badge/20steps/bricks-installer/tested.svg)
 [![Dependency Status](https://www.versioneye.com/user/projects/58542d53ad9aa2003316bc27/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/58542d53ad9aa2003316bc27)
 [![Packagist version](https://img.shields.io/packagist/v/20steps/bricks-installer.svg)](https://packagist.org/packages/20steps/bricks-installer)
 
@@ -171,6 +172,14 @@ openssl.cafile=C:/path/to/cacert.pem
 If you can't locate the `cacert.pem` file anywhere on your system, you can
 safely download it from the official website of the cURL project:
 http://curl.haxx.se/ca/cacert.pem
+
+
+## Author
+
+* Helmut Hoffer von Ankershoffen (hhva@20steps.de)
+
+## Sponsored by
+<a href="http://20steps.de">20steps - Digital Full Service Boutique</a>
 
 [1]:  https://github.com/20steps/bricks-platform-standard-edition
 [2]:  https://getcomposer.org/
