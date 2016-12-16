@@ -125,7 +125,7 @@ class NewCommand extends DownloadCommand
 
         // Get the full list of Bricks versions to check if it's installable
         $client = $this->getGuzzleClient();
-        $bricksVersions = $client->get('https://bricks.20steps.de/versions/bricks-platform.json')->json();
+        $bricksVersions = json_decode($client->get('https://bricks.20steps.de/versions/bricks-platform.json')->getBody(),true);
         if (empty($bricksVersions)) {
             throw new \RuntimeException(
                 "There was a problem while downloading the list of Bricks versions from\n".

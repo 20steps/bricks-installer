@@ -18,8 +18,8 @@ use Distill\Exception\IO\Output\TargetDirectoryNotWritableException;
 use Distill\Strategy\MinimumSize;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
-use GuzzleHttp\Event\ProgressEvent;
-use GuzzleHttp\Utils;
+use GuzzleHttp\HandlerStack;
+use GuzzleHttp\Psr7\Request;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\Helper;
 use Symfony\Component\Console\Helper\ProgressBar;
@@ -112,7 +112,7 @@ abstract class DownloadCommand extends Command
         $this->fs = new Filesystem();
 	
 	    $client = $this->getGuzzleClient();
-	    $bricksInstallerVersions = $client->get('https://bricks.20steps.de/versions/bricks-installer.json')->json();
+	    $bricksInstallerVersions = json_decode($client->get('https://bricks.20steps.de/versions/bricks-installer.json')->getBody(),true);
 	    if (empty($bricksInstallerVersions)) {
 		    throw new \RuntimeException(
 			    "There was a problem while downloading the list of Bricks installer versions from\n".
@@ -156,9 +156,9 @@ abstract class DownloadCommand extends Command
 
         /** @var ProgressBar|null $progressBar */
         $progressBar = null;
-        $downloadCallback = function (ProgressEvent $event) use (&$progressBar) {
-            $downloadSize = $event->downloadSize;
-            $downloaded = $event->downloaded;
+        $downloadCallback = function ($dl_total_size, $dl_size_so_far, $ul_total_size, $ul_size_so_far) use (&$progressBar) {
+            $downloadSize = $dl_total_size;
+            $downloaded = $dl_size_so_far;
 
             // progress bar is only displayed for files larger than 1MB
             if ($downloadSize < 1 * 1024 * 1024) {
@@ -196,9 +196,8 @@ abstract class DownloadCommand extends Command
         $this->downloadedFilePath = rtrim(getcwd(), DIRECTORY_SEPARATOR).DIRECTORY_SEPARATOR.'.'.uniqid(time()).DIRECTORY_SEPARATOR.'bricks.'.pathinfo($bricksArchiveFile, PATHINFO_EXTENSION);
 
         try {
-            $request = $client->createRequest('GET', $bricksArchiveFile);
-            $request->getEmitter()->on('progress', $downloadCallback);
-            $response = $client->send($request);
+        	$request = new Request('GET', $bricksArchiveFile);
+        	$response = $client->send($request,['progress' => $downloadCallback]);
         } catch (ClientException $e) {
             if ('new' === $this->getName() && ($e->getCode() === 403 || $e->getCode() === 404)) {
                 throw new \RuntimeException(sprintf(
@@ -270,7 +269,7 @@ abstract class DownloadCommand extends Command
         }
 
         try {
-            $handler = Utils::getDefaultHandler();
+            $handler = HandlerStack::create();
         } catch (\RuntimeException $e) {
             throw new \RuntimeException('The Bricks Installer requires the php-curl extension or the allow_url_fopen ini setting.');
         }
@@ -407,7 +406,7 @@ abstract class DownloadCommand extends Command
                     $this->getInstalledBricksVersion()
                 ));
 
-                $this->fs->dumpFile($path, $response->getBody()->getContents());
+                $this->fs->dumpFile($path, $response->getBody());
             } catch (\Exception $e) {
                 // don't throw an exception in case the .gitignore file cannot be created,
                 // because this is just an enhancement, not something mandatory for the project
@@ -580,7 +579,7 @@ abstract class DownloadCommand extends Command
     {
         $client = $this->getGuzzleClient();
 
-        return $client->get($url)->getBody()->getContents();
+        return $client->get($url)->getBody();
     }
 
     /**
