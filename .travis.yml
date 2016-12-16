@@ -26,4 +26,4 @@ script:
 
 notifications:
   email:
-    - bricks-dev@20steps.de
+    - dev@20steps.de
