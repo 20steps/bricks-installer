@@ -2,4 +2,4 @@
 
 scp bricks.phar root@bricks.cluster.20steps.de:/mnt/data/zones/l/custom/BricksSite/downloads/installer
 scp versions.json root@bricks.cluster.20steps.de:/mnt/data/zones/l/custom/BricksSite/versions/bricks-installer.json
-ssh root@bricks.cluster.20steps.de 'cd /mnt/data/zones/l/custom/BricksSite/downloads/ | ./copy'
+ssh root@bricks.cluster.20steps.de 'cd /mnt/data/zones/l/custom/BricksSite/downloads/; ./copy'
