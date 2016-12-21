@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Bricks\Installer;
+namespace Bricks\Installer\Command;
 
 use Distill\Distill;
 use Distill\Exception\IO\Input\FileCorruptedException;

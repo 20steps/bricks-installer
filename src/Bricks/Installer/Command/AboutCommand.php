@@ -7,7 +7,7 @@
  * @author Helmut Hoffer von Ankershoffen <hhva@20steps.de>
  */
 
-namespace Bricks\Installer;
+namespace Bricks\Installer\Command;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
