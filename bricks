@@ -38,10 +38,10 @@ if (!isset($_SERVER['PATH']) && isset($_SERVER['Path'])) {
 
 $app = new Bricks\Installer\Application('Bricks Installer', $appVersion);
 $app->add(new Bricks\Installer\AboutCommand($appVersion));
-$app->add(new Bricks\Installer\NewCommand());
-$app->add(new Bricks\Installer\DemoCommand());
-$app->add(new Bricks\Installer\SelfUpdateCommand());
+$app->add(new Bricks\Installer\NewCommand($appVersion));
+$app->add(new Bricks\Installer\DemoCommand($appVersion));
+$app->add(new Bricks\Installer\SelfUpdateCommand($appVersion));
 
-$app->setDefaultCommand('about');
+//$app->setDefaultCommand('about');
 
 $app->run();

@@ -15,6 +15,17 @@ class ComposerManager
         $this->fs = new Filesystem();
     }
 
+    public function detectBricks() {
+    	$composerConfig = $this->getProjectConfig();
+    	if (array_key_exists('require',$composerConfig)) {
+		    $requires = $composerConfig['require'];
+		    if (array_key_exists('20steps/bricks',$requires)) {
+			    return true;
+		    }
+	    }
+	    return false;
+    }
+    
     public function initializeProjectConfig()
     {
         $composerConfig = $this->getProjectConfig();

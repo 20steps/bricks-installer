@@ -24,17 +24,17 @@ use Bricks\Installer\Manager\ComposerManager;
  * @author Javier Eguiluz <javier.eguiluz@gmail.com>
  * @author Helmut Hoffer von Ankershoffen <hhva@20steps.de>
  */
-class NewCommand extends DownloadCommand
+class NewCommand extends AbstractDownloadCommand
 {
     /**
      * {@inheritdoc}
      */
     protected function configure()
     {
+    	parent::configure();
         $this
             ->setName('new')
-            ->setDescription('Creates a new Bricks project.')
-            ->addArgument('directory', InputArgument::REQUIRED, 'Directory where the new project will be created.')
+            ->setDescription('Creates a new Bricks project')
             ->addArgument('version', InputArgument::OPTIONAL, 'The Bricks version to be installed (defaults to the latest stable version).', 'latest')
         ;
     }
@@ -198,6 +198,8 @@ class NewCommand extends DownloadCommand
      */
     protected function cleanUp()
     {
+	    $this->output->writeln(" Cleaning up ...\n");
+
         $this->fs->remove(dirname($this->downloadedFilePath));
 
         try {
@@ -263,12 +265,19 @@ class NewCommand extends DownloadCommand
         $serverRunCommand = version_compare($this->version, '2.6.0', '>=') && extension_loaded('pcntl') ? 'server:start' : 'server:run';
 
         $this->output->writeln(sprintf(
-            "    * Configure your application in <comment>app/config/parameters.yml</comment> file.\n\n".
             "    * List available commands by executing <comment>bin/console</comment>.\n\n".
-            "    * Run your application:\n".
-            "        1. Execute the <comment>php %s/console %s</comment> command.\n".
+            "    * Run using Docker:\n".
+            "        1. Build web and database container once by executing <comment>docker-compose build</comment> (this will take some time)\n".
+            "        1. Run <comment>docker-compose up</comment>\n".
             "        2. Browse to the <comment>http://localhost:8000</comment> URL.\n\n".
-            "    * Read the documentation at <comment>https://bricks.20steps.de/doc</comment>\n",
+            "    * Prepare a locally running MySQL database:\n".
+            "    * Run using the integrated PHP webserver:\n".
+            "        1. Run <comment>%s/console %s</comment>.\n".
+            "        2. Browse to the <comment>http://localhost:8000</comment> URL.\n\n".
+            "     * Run using the PHP Process Manager:\n".
+	        "        1. Run <comment>vendor/bin/ppm start --bootstrap=symfony --app-env=dev  --logging=0 --debug=0 --workers=20 --socket-path=var/ppm/run/ --port=8000</comment>\n".
+            "        2. Browse to the <comment>http://localhost:8000</comment> URL.\n\n".
+            "    * Read the documentation at <comment>doc/getting-started.md</comment>\n",
             $consoleDir, $serverRunCommand
         ));
 
@@ -282,7 +291,9 @@ class NewCommand extends DownloadCommand
      */
     protected function dumpReadmeFile()
     {
-        $readmeContents = sprintf("%s\n%s\n\nA Bricks project created on %s.\n", $this->projectName, str_repeat('=', strlen($this->projectName)), date('F j, Y, g:i a'));
+	    $this->output->writeln(" Generating README.md ...\n");
+
+        $readmeContents = sprintf("%s\n%s\n\nBricks project created on %s.\n", $this->projectName, str_repeat('=', strlen($this->projectName)), date('F j, Y, g:i a'));
         try {
             $this->fs->dumpFile($this->projectDir.'/README.md', $readmeContents);
         } catch (\Exception $e) {
@@ -302,6 +313,8 @@ class NewCommand extends DownloadCommand
      */
     protected function updateParameters()
     {
+	    $this->output->writeln(" Updating app/config/parameters.yml ...\n");
+
         $filename = $this->projectDir.'/app/config/parameters.yml';
 
         if (!is_writable($filename)) {
@@ -330,6 +343,8 @@ class NewCommand extends DownloadCommand
      */
     protected function updateComposerConfig()
     {
+	    $this->output->writeln(" Updating composer.json ...\n");
+
         parent::updateComposerConfig();
         $this->composerManager->updateProjectConfig([
             'name' => $this->composerManager->createPackageName($this->projectName),

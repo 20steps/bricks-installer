@@ -38,28 +38,13 @@ use Bricks\Installer\Manager\ComposerManager;
  * @author Javier Eguiluz <javier.eguiluz@gmail.com>
  * @author Helmut Hoffer von Ankershoffen <hhva@20steps.de>
  */
-abstract class DownloadCommand extends Command
+abstract class AbstractDownloadCommand extends AbstractCommand
 {
-    /**
-     * @var Filesystem To dump content to a file
-     */
-    protected $fs;
-
     /**
      * @var OutputInterface To output content
      */
     protected $output;
-
-    /**
-     * @var string The project name
-     */
-    protected $projectName;
-
-    /**
-     * @var string The project dir
-     */
-    protected $projectDir;
-
+	
     /**
      * @var string The version to install
      */
@@ -84,9 +69,6 @@ abstract class DownloadCommand extends Command
      * @var array The requirement errors
      */
     protected $requirementsErrors = array();
-
-    /** @var ComposerManager */
-    protected $composerManager;
 
     /**
      * Returns the type of the downloaded application in a human readable format.
@@ -287,7 +269,7 @@ abstract class DownloadCommand extends Command
      */
     protected function extract()
     {
-        $this->output->writeln(" Preparing project...\n");
+        $this->output->writeln(" Extracting ...\n");
 
         try {
             $distill = new Distill();
@@ -341,6 +323,8 @@ abstract class DownloadCommand extends Command
      */
     protected function checkBricksRequirements()
     {
+	    $this->output->writeln(" Cjecl ...\n");
+
         if (null === $requirementsFile = $this->getBricksRequirementsFilePath()) {
             return $this;
         }
@@ -398,6 +382,9 @@ abstract class DownloadCommand extends Command
     protected function createGitIgnore()
     {
         if (!is_file($path = $this->projectDir.'/.gitignore')) {
+	
+	        $this->output->writeln(" Generating .gitignore ...\n");
+
             try {
                 $client = $this->getGuzzleClient();
 

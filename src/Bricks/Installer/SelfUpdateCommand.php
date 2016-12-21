@@ -27,7 +27,7 @@ use Symfony\Component\Filesystem\Exception\IOException;
  * @author Grégoire Pineau <lyrixx@lyrixx.info>
  * @author Helmut Hoffer von Ankershoffen <hhva@20steps.de>
  */
-class SelfUpdateCommand extends DownloadCommand
+class SelfUpdateCommand extends AbstractDownloadCommand
 {
     /**
      * @var string The temp dir
@@ -65,6 +65,7 @@ class SelfUpdateCommand extends DownloadCommand
      */
     protected function configure()
     {
+    	parent::configure();
         $this
             ->setName('self-update')
             ->setAliases(array('selfupdate'))

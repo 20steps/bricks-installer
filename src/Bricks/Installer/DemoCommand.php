@@ -23,17 +23,17 @@ use Bricks\Installer\Manager\ComposerManager;
  * @author Javier Eguiluz <javier.eguiluz@gmail.com>
  * @author Helmut Hoffer von Ankershoffen <hhva@20steps.de>
  */
-class DemoCommand extends DownloadCommand
+class DemoCommand extends AbstractDownloadCommand
 {
     /**
      * {@inheritdoc}
      */
     protected function configure()
     {
+    	parent::configure();
         $this
             ->setName('demo')
-            ->addArgument('directory', InputArgument::OPTIONAL, 'Directory where the new project will be created.')
-            ->setDescription('Creates a demo Bricks project.')
+            ->setDescription('Creates a demo Bricks project')
         ;
     }
 

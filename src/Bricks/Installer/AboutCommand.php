@@ -13,38 +13,24 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
+use Bricks\Installer\Manager\ComposerManager;
+
 /**
  * This command provides information about the Bricks Installer.
  *
  * @author Javier Eguiluz <javier.eguiluz@gmail.com>
  */
-class AboutCommand extends Command
+class AboutCommand extends AbstractCommand
 {
-    /**
-     * @var string The current version of the Bricks Installer
-     */
-    private $appVersion;
-
-    /**
-     * Constructor.
-     *
-     * @param string $appVersion The current version of the Bricks Installer
-     */
-    public function __construct($appVersion)
-    {
-        parent::__construct();
-
-        $this->appVersion = $appVersion;
-    }
-
     /**
      * {@inheritdoc}
      */
     protected function configure()
     {
+    	parent::configure();
         $this
             ->setName('about')
-            ->setDescription('Bricks Installer Help.')
+            ->setDescription('About this installer')
         ;
     }
 
