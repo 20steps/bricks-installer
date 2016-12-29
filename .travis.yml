@@ -49,10 +49,10 @@ before_install:
 
 install:
   - if [[ $APCU_PECL_VERSION != '' ]]; then echo "yes\nno\n" | pecl install $APCU_PECL_VERSION
-    && sed -i 's/extension="xapcu.so"//' ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+    && sed -i 's/extension="apcu.so"//' ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
     ; fi
   - if [[ $APCU_BC_PECL_VERSION != '' ]]; then pecl install $APCU_BC_PECL_VERSION &&
-    sed -i 's/extension="xapc.so"//' ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+    sed -i 's/extension="apc.so"//' ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
     ; fi
   - if [[ $TRAVIS_PHP_VERSION != 'hhvm' ]]; then if [[ $APCU_PECL_VERSION != '' && $APCU_BC_PECL_VERSION
     == '' ]]; then phpenv config-add etc/travis/apcu.ini ; elif [[ $APCU_BC_PECL_VERSION
@@ -69,6 +69,7 @@ install:
 
 before_script:
   - cat ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+  - ls  /home/travis/.phpenv/versions/7.0/etc/conf.d
   - php --version
   - php -m
 
