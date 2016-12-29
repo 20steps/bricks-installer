@@ -68,6 +68,7 @@ install:
   - php box build
 
 before_script:
+  - cat ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
   - php --version
   - php -m
 
