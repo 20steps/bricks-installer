@@ -1,4 +1,6 @@
-/vendor/
-.idea/
+.idea
+.DS_Store
+*~
 bricks.phar
 composer.lock
+/vendor/
