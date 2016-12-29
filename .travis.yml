@@ -14,34 +14,35 @@ services:
 - redis-server
 cache:
   directories:
-    - $HOME/.composer/cache/files
+    - "$HOME/.composer/cache/files"
 
 matrix:
   fast_finish: true
   include:
-    - php: 7.0
-      env:
-      - APCU_PECL_VERSION="apcu-5.1.7"
-      - APCU_BC_PECL_VERSION="apcu_bc-1.0.3"
-      - SYMFONY_ENV="test"
-      - SYMFONY_DEPRECATIONS_HELPER="weak"
-      - DATABASE_USERNAME="travis"
-      - DATABASE_PASSWORD=""
-      - BRICKS_COLOR="generic"
-      - BRICKS_STAGE="test"
-    - php: 7.1
-      env:
-      - APCU_PECL_VERSION="apcu-5.1.7"
-      - APCU_BC_PECL_VERSION="apcu_bc-1.0.3"
-      - SYMFONY_ENV="test"
-      - SYMFONY_DEPRECATIONS_HELPER="weak"
-      - DATABASE_USERNAME="travis"
-      - DATABASE_PASSWORD=""
-      - BRICKS_COLOR="generic
-      - BRICKS_STAGE="test"
+  - php: 7.0
+    env:
+    - APCU_PECL_VERSION="apcu-5.1.7"
+    - APCU_BC_PECL_VERSION="apcu_bc-1.0.3"
+    - SYMFONY_ENV="test"
+    - SYMFONY_DEPRECATIONS_HELPER="weak"
+    - DATABASE_USERNAME="travis"
+    - DATABASE_PASSWORD=""
+    - BRICKS_COLOR="generic"
+    - BRICKS_STAGE="test"
+  - php: 7.1
+    env:
+    - APCU_PECL_VERSION="apcu-5.1.7"
+    - APCU_BC_PECL_VERSION="apcu_bc-1.0.3"
+    - SYMFONY_ENV="test"
+    - SYMFONY_DEPRECATIONS_HELPER="weak"
+    - DATABASE_USERNAME="travis"
+    - DATABASE_PASSWORD=""
+    - BRICKS_COLOR="generic
+    - BRICKS_STAGE="test"
 
 before_install:
   - composer self-update
+  - composer global require 'hirak/prestissimo'
   - curl -LSs https://box-project.github.io/box2/installer.php | php
   - mv box.phar box
   - chmod 755 box
@@ -65,6 +66,7 @@ install:
     ; fi ; fi
   - composer install --no-interaction
   - php box build
+  - php -m
 
 script:
   - phpunit
