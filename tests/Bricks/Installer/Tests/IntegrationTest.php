@@ -106,6 +106,7 @@ class IntegrationTest extends \PHPUnit_Framework_TestCase
     private function runCommand($command, $workingDirectory = null)
     {
         $process = new Process($command);
+	    $process->setTimeout(0);
         $process->setWorkingDirectory($workingDirectory ?: $this->rootDir);
         $process->mustRun();
 

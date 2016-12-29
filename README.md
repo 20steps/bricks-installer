@@ -55,7 +55,13 @@ Then, execute the create-project command to create a new Bricks application base
 ```bash
 composer create-project 20steps/bricks-platform-standard-edition my_project_name
 ```
- 
+
+To create a new Bricks application based on the latest non-stable version execute:
+
+```bash
+composer create-project 20steps/bricks-platform-standard-edition my_project_name dev-master
+```
+
 Using the installer
 -------------------
 
