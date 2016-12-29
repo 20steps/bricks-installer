@@ -66,6 +66,9 @@ install:
     ; fi ; fi
   - composer install --no-interaction
   - php box build
+
+before_script:
+  - php --version
   - php -m
 
 script:
