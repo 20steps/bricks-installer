@@ -24,7 +24,6 @@ matrix:
     - APCU_PECL_VERSION="apcu-5.1.7"
     - APCU_BC_PECL_VERSION="apcu_bc-1.0.3"
     - SYMFONY_ENV="test"
-    - SYMFONY_DEPRECATIONS_HELPER="weak"
     - DATABASE_USERNAME="travis"
     - DATABASE_PASSWORD=""
     - BRICKS_COLOR="generic"
@@ -34,7 +33,6 @@ matrix:
     - APCU_PECL_VERSION="apcu-5.1.7"
     - APCU_BC_PECL_VERSION="apcu_bc-1.0.3"
     - SYMFONY_ENV="test"
-    - SYMFONY_DEPRECATIONS_HELPER="weak"
     - DATABASE_USERNAME="travis"
     - DATABASE_PASSWORD=""
     - BRICKS_COLOR="generic
