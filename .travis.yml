@@ -28,7 +28,7 @@ matrix:
     - DATABASE_USERNAME="travis"
     - DATABASE_PASSWORD=""
     - BRICKS_COLOR="generic"
-    - BRICKS_STAGE="test"
+    - BRICKS_STAGE="dev"
   - php: 7.1
     env:
     - APCU_PECL_VERSION="apcu-5.1.7"
@@ -38,7 +38,7 @@ matrix:
     - DATABASE_USERNAME="travis"
     - DATABASE_PASSWORD=""
     - BRICKS_COLOR="generic
-    - BRICKS_STAGE="test"
+    - BRICKS_STAGE="dev"
 
 before_install:
   - composer self-update
@@ -68,8 +68,6 @@ install:
   - php box build
 
 before_script:
-  - cat ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
-  - ls  /home/travis/.phpenv/versions/7.0/etc/conf.d
   - php --version
   - php -m
 
